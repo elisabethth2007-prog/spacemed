@@ -5,4 +5,8 @@ This file uses [markdown](https://www.markdownguide.org/). Checkout the
 of the syntax. GitLab supports various
 [Markdown extensions](https://docs.gitlab.com/user/markdown/)
 
-The shell is fun
+The shell is fun.
+
+Short biography test:
+Je m'appelle Elisabeth, I am 26 y.o..
+I was born in Hamm, Northrhine-Westphalia. I am not good with computers.
