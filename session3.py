@@ -17,7 +17,7 @@
 # Open data in python:
 
 # %%
-dataFile = open("data/pulse_data.csv")
+dataFile = open("data/pulse_data.csv",'r')
 
 # %%
 # Why does this not work?
@@ -27,6 +27,9 @@ dataFile = open("data/pulse_data.csv")
 
 # %%
 # inFile = open("data/pulse_data.csv",'r') #this should work
+
+# %%
+print(dataFile)
 
 # %% [markdown]
 # Show current directory:
@@ -58,6 +61,9 @@ print(len(time), len(absorption))
 for i in range (10):
     print (time[i], absorption [i])
 
+# %% [markdown]
+# Numpy is on the Charité server, for calculating things like matlab; matplotlib is another library, pyplot is a collection within
+
 # %%
 import numpy
 from matplotlib import pyplot
@@ -68,6 +74,7 @@ y=numpy.random.normal(size=(500,))
 
 # %%
 pyplot.plot(x,y,"o") # "o" disconnects the lines to dots
+pyplot.show()
 
 # %%
 pyplot.plot(x,y,"or")
@@ -101,8 +108,8 @@ pyplot.xlabel("time in s")
 pyplot.ylabel("absorption")
 pyplot.title("Pulse wave")
 
-# %%
-Make the plotting shorter:
+# %% [markdown]
+# Make the plotting shorter:
 
 # %%
 # This creates the plot but shows nothing
