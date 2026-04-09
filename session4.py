@@ -14,7 +14,54 @@
 # ---
 
 # %% [markdown]
-# Open data in python:
+# esc-r makes a raw cell, just plain text (markdown and code are executed)
+
+# %% [raw]
+# ---
+# title: "Session 4: Reproducible Documents"
+# author: Elisabeth Thamm
+# format:
+#   html:
+#     code-fold: true
+#   pdf:
+#     echo: false
+#     pdf-engine: pdflatex
+#     toc: true
+#     number-depth: 2
+#     number-sections: true
+#     papersize: a4
+#     documentclass: article
+# jupyter: python3
+# ---
+
+# %% [raw]
+# # is a heading, $ equation $$ equation on seperate line
+#
+# # Rocket Equation
+# At time $t_0$ to rocket starts to expel gas at a
+# _constant mass flow rate_ $R$ meassured in kg/s
+# and _exhaust velocity relative to the rocket_
+# $v_e$ in m/s.
+# $$
+# \frac{dv}{dt} = -\frac{F}{m(t)} = -\frac{Rv_e}{m(t)}
+# $$ {#eq-rocket-acc}
+# Integrating both sides of @eq-rocket-acc from 0
+# to $T$ we get
+
+# %% [markdown]
+# # Rocket Equation
+# At time $t_0$ to rocket starts to expel gas at a
+# _constant mass flow rate_ $R$ meassured in kg/s
+# and _exhaust velocity relative to the rocket_
+# $v_e$ in m/s.
+# $$
+# \frac{dv}{dt} = -\frac{F}{m(t)} = -\frac{Rv_e}{m(t)}
+# $$ {#eq-rocket-acc}
+# Integrating both sides of @eq-rocket-acc from 0
+# to $T$ we get
+
+# %% [markdown]
+# Open data in python: (Reading a Data File)
 
 # %%
 dataFile = open("data/pulse_data.csv")
@@ -48,6 +95,9 @@ x=time
 y=absorption
 
 # %%
+#| label: fig-dataset
+#| fig-cap: "Measurements from an oxymetry sensor as a
+#| function of time for 3 cycles"
 pyplot.plot(time,absorption)
 pyplot.xlabel("time [s]")
 
