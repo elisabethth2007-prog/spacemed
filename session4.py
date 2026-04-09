@@ -102,3 +102,104 @@ pyplot.plot(time,absorption)
 pyplot.xlabel("time [s]")
 
 # %%
+a=numpy.arange(10)+1
+
+# %%
+a.shape
+
+# %%
+a.dtype
+
+# %%
+a.nbytes
+
+# %%
+b=numpy.array([[1,2,3],[4,5,6]])
+
+# %%
+b.shape
+
+# %%
+b.T 
+
+# %%
+b.T @b
+
+# %%
+a.T @a
+
+# %%
+a
+
+# %%
+numpy.max(a)
+
+# %%
+numpy.argmax(a)
+
+# %% [raw]
+# for i in range (data)
+#   #i becomes each point
+#   start = max(i-w,0) #its an either or
+#   end = i+w
+#     min(i+w,len(data))
+#
+#
+# window-size w
+
+# %%
+absorption = numpy.array(absorption)
+time = numpy.array(time)
+
+# %%
+w=50
+
+# %%
+subset = absorption #you can choose what part of the data to analyze [:1000]
+
+# %%
+peaks = []
+for i in range(len(subset)):
+    start = max(i-w,0)
+    end = min(i+w, len(subset))
+    window = subset[start:end]
+    max_pos = numpy.argmax(window) + start
+    if i == max_pos:
+        peaks.append(i)
+print(peaks)
+
+# %%
+pyplot.plot(subset)
+pyplot.plot(peaks,subset[peaks], "ro")
+
+# %%
+test = numpy.arange(20)
+
+# %%
+s = test[5:10] #showing element position 5 to 9
+
+# %%
+s
+
+# %%
+test
+
+# %% [raw]
+# Homework: how to compute the HR
+# HR= 60/ delta Tpeaks
+# tp = time[peaks]
+# tp[1:]-tp[:-1]
+
+# %%
+time_peaks = time[peaks]
+
+# %%
+delta_t = time_peaks[1:]- time_peaks[:-1]
+
+# %%
+hr = 60 / delta_t
+
+# %%
+pyplot.plot(hr)
+
+# %%
