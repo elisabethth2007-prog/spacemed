@@ -227,6 +227,227 @@ Figure&nbsp;1
 </figure>
 </div>
 </div>
+<div id="2800c61b-c70d-45a7-95e1-303460d7062f" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>numpy.arange(<span class="dv">10</span>)<span class="op">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="e858c057-2a28-41bf-b1f8-538497fa2933" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>(10,)</code></pre>
+</div>
+</div>
+<div id="e69d5c84-b32b-4415-975f-f76bb5375aa8" class="cell" data-execution_count="22">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>dtype('int64')</code></pre>
+</div>
+</div>
+<div id="00c281b0-c507-4afe-a536-7309eefccc42" class="cell" data-execution_count="23">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a.nbytes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>80</code></pre>
+</div>
+</div>
+<div id="e8444949-4b57-4225-ad11-120f975fcf91" class="cell" data-execution_count="24">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>numpy.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="253a66bf-fd44-4084-bf8d-050676a1add7" class="cell" data-execution_count="25">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>b.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>(2, 3)</code></pre>
+</div>
+</div>
+<div id="f4af5962-ccd0-4a7e-ab0f-2feaa0ec3c82" class="cell" data-execution_count="27">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>b.T </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>array([[1, 4],
+       [2, 5],
+       [3, 6]])</code></pre>
+</div>
+</div>
+<div id="9419206f-64ac-453c-bfac-02933342e5fa" class="cell" data-execution_count="28">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>b.T <span class="op">@</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>array([[17, 22, 27],
+       [22, 29, 36],
+       [27, 36, 45]])</code></pre>
+</div>
+</div>
+<div id="94693bb9-6884-42b8-820e-51ee688ba735" class="cell" data-execution_count="29">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>a.T <span class="op">@</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>np.int64(385)</code></pre>
+</div>
+</div>
+<div id="c5b98dec-92af-4266-9ae1-c333e2ffaab8" class="cell" data-execution_count="30">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])</code></pre>
+</div>
+</div>
+<div id="522d8f34-b695-4656-8f8a-ccccbb59a6b0" class="cell" data-execution_count="31">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>numpy.<span class="bu">max</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>np.int64(10)</code></pre>
+</div>
+</div>
+<div id="ed496210-15e2-4fe0-a563-25f972ea44b8" class="cell" data-execution_count="32">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>numpy.argmax(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>np.int64(9)</code></pre>
+</div>
+</div>
+<p>for i in range (data) #i becomes each point start = max(i-w,0) #its an either or end = i+w min(i+w,len(data))</p>
+<p>window-size w</p>
+<div id="315fa3a0-4596-4d03-b6e0-922d57c983b9" class="cell" data-execution_count="55">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>absorption <span class="op">=</span> numpy.array(absorption)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> numpy.array(time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="90a45c10-8029-4b51-84cc-98309e207203" class="cell" data-execution_count="37">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>w<span class="op">=</span><span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="9af7fbc7-2628-4943-b5b5-fc9cd85a7503" class="cell" data-execution_count="56">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> absorption <span class="co">#you can choose what part of the data to analyze [:1000]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="1506b4dd-6482-4232-b5fd-ff8c57abe2f9" class="cell" data-execution_count="57">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>peaks <span class="op">=</span> []</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(subset)):</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> <span class="bu">max</span>(i<span class="op">-</span>w,<span class="dv">0</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    end <span class="op">=</span> <span class="bu">min</span>(i<span class="op">+</span>w, <span class="bu">len</span>(subset))</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    window <span class="op">=</span> subset[start:end]</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    max_pos <span class="op">=</span> numpy.argmax(window) <span class="op">+</span> start</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> max_pos:</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>        peaks.append(i)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(peaks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[96, 438, 774, 1142, 1502, 1851, 2211, 2578, 2929, 3291, 3651, 4003, 4356, 4724, 5092, 5452, 5828, 6252, 6647, 7022, 7414, 7787, 8159, 8548, 8919, 9272, 9626, 9992, 10344, 10703, 11076, 11429, 11781, 12153, 12514, 12855, 13183, 13531, 13891, 14247, 14587, 14927, 15286, 15662, 16034, 16388, 16746, 17087, 17413, 17751, 18109, 18465, 18812, 19167, 19505, 19842, 20173, 20535, 20880, 21246, 21628, 22024, 22393, 22767, 23144, 23483, 23822, 24177, 24527, 24872, 25237, 25664, 26106, 26516, 26920, 27319, 27693, 28070, 28439, 28787, 29136, 29488, 29888, 30262, 30639, 31005, 31345, 31686, 32034, 32381, 32719, 33052, 33385, 33712, 34012, 34312, 34632, 34953, 35275, 35601, 35948, 36305, 36660, 37008, 37344, 37671, 38002, 38340, 38662, 38983, 39317, 39672, 40020, 40376, 40745, 41102, 41448, 41797, 42140, 42477, 42822, 43191, 43556, 43921, 44323, 44698, 45040, 45387, 45736, 46058, 46378, 46696, 47019, 47343, 47700, 48084, 48440, 48791, 49161, 49524, 49863, 50206, 50556, 50895, 51231, 51576, 51940, 52299, 52643, 53001, 53363, 53703, 54031, 54359, 54703, 55040, 55381, 55721, 56048, 56367, 56688, 57003, 57307, 57605, 57907, 58213, 58530, 58855, 59178, 59512, 59852, 60189, 60542, 60878, 61184, 61485, 61790, 62098, 62422, 62752, 63064]</code></pre>
+</div>
+</div>
+<div id="390d6cb2-0579-405b-83d8-eb4efe772d03" class="cell" data-execution_count="58">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pyplot.plot(subset)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>pyplot.plot(peaks,subset[peaks], <span class="st">"ro"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="session4_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="56fca382-90fc-4ada-a8be-b837ef676c4d" class="cell" data-execution_count="41">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> numpy.arange(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="2d32e7a0-9bd0-4425-ae60-9c3b2b3ead7f" class="cell" data-execution_count="42">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> test[<span class="dv">5</span>:<span class="dv">10</span>] <span class="co">#showing element position 5 to 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="500096f7-2293-4d4b-9b5f-312101a22828" class="cell" data-execution_count="43">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>array([5, 6, 7, 8, 9])</code></pre>
+</div>
+</div>
+<div id="805be489-bd38-4ba6-92ab-49a2bb4eb3a4" class="cell" data-execution_count="44">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+       17, 18, 19])</code></pre>
+</div>
+</div>
+<p>Homework: how to compute the HR HR= 60/ delta Tpeaks tp = time[peaks] tp[1:]-tp[:-1]</p>
+<div id="57c3449e-1b5d-4d18-9f41-54e43457a9ca" class="cell" data-execution_count="59">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>time_peaks <span class="op">=</span> time[peaks]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="6bbd18e6-7945-4498-a28b-26c726b907d1" class="cell" data-execution_count="60">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>delta_t <span class="op">=</span> time_peaks[<span class="dv">1</span>:]<span class="op">-</span> time_peaks[:<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="fddceddf-c166-439a-b074-5722915f501e" class="cell" data-execution_count="61">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>hr <span class="op">=</span> <span class="dv">60</span> <span class="op">/</span> delta_t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="d4cb225b-a8a2-41f7-aa98-103ced298f21" class="cell" data-execution_count="62">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>pyplot.plot(hr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="session4_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 
 </main>

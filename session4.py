@@ -35,6 +35,8 @@
 # ---
 
 # %% [raw]
+# Raw vs Markdown Overview:
+#
 # # is a heading, $ equation $$ equation on seperate line
 #
 # # Rocket Equation
