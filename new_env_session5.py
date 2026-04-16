@@ -16,6 +16,24 @@
 # %% [markdown]
 # ## Session 5 - pandas
 
+# %% [raw]
+# ---
+# title: "Session 5: Pandas"
+# author: Elisabeth Thamm
+# format:
+#   html:
+#     code-fold: true
+#   pdf:
+#     echo: false
+#     pdf-engine: pdflatex
+#     toc: true
+#     number-depth: 2
+#     number-sections: true
+#     papersize: a4
+#     documentclass: article
+# jupyter: python3
+# ---
+
 # %%
 import pandas
 
@@ -23,8 +41,6 @@ import pandas
 station_ids = pandas.read_csv("data/Niederschlag_1981-2010_Stationsliste.txt",
                               encoding="iso-8859-1", delimiter=" *; *",
                              index_col="Stations_id", engine="python")
-
-# %%
 
 # %%
 station_ids
@@ -41,7 +57,7 @@ station_ids.head()
 # %%
 station_ids.tail()
 
-# %% [raw]
+# %% [markdown]
 # delete last column: (unnamed) axis=1 columns, axis=0 rows
 
 # %%
@@ -59,7 +75,7 @@ station_ids.head()
 # %%
 station_ids.iloc[2,0]
 
-# %% [raw]
+# %% [markdown]
 # slicing by index, upper band is not included
 
 # %%
@@ -68,7 +84,7 @@ station_ids.iloc[:5]
 # %%
 station_ids.iloc[:, 1:3]
 
-# %% [raw]
+# %% [markdown]
 # slicing by label, upper band is included
 
 # %%
@@ -98,8 +114,8 @@ station_ids.Bundesland.iloc[-1] #tells us what the last entry is, as a check
 # %%
 bayern.iloc[17]
 
-# %% [raw]
-# Task for this session
+# %% [markdown]
+# Task for this session: 
 
 # %%
 mask1 = station_ids.Bundesland == "Berlin" #creates a mask where column bundesland is berlin
@@ -113,7 +129,7 @@ berlin.iloc[17]
 # %%
 # station_ids.loc[:,"geogr. Breite":"geogr. Laenge"]
 
-# %% [raw]
+# %% [markdown]
 # Assignment: load the 30 year mean precipitation data
 # data/Niederschlag 1981-2010.txt
 # • only keep the columns with the monthly means
@@ -126,13 +142,13 @@ precip_ref = pandas.read_csv("data/Niederschlag_1981-2010.txt",
 # %%
 precip_ref = precip_ref.loc[:,"Jan.":"Dez."]
 
-# %% [raw]
+# %% [markdown]
 # Monthly climate data:
 
 # %%
 precip_ref.loc[399].plot.bar()
 
-# %% [raw]
+# %% [markdown]
 # Assignment: load the hourly data
 
 # %%
@@ -171,14 +187,14 @@ monthly.describe() #statistics over the entire year
 # %%
 monthly.groupby(monthly.index.month).describe() #index is date time object, count shows 11 years
 
-# %% [raw]
+# %% [markdown]
 # Monthly data from Alexanderplatz: (to compare with 30 year mean precipitation data)
 
 # %%
 monthly.plot()
 
-# %%
-#Combining with previous plot
+# %% [markdown]
+# Combining with previous plot
 
 # %%
 refs = pandas.DataFrame({"precipitation": precip_ref.loc[399].to_list()*12},
@@ -203,8 +219,31 @@ monthly.plot()
 # %%
 monthly["anomaly"] = monthly.precipitation - monthly.climate
 
-# %% [raw]
+# %% [markdown]
 # It is getting drier than before
 
 # %%
 monthly.anomaly.plot()
+
+# %% [markdown]
+# Homework Session 5: 
+# I don't know why this is adding anomaly to the first plot. 
+
+# %% [markdown]
+# creating multiple plots w/ pyplot.subplot
+
+# %%
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(2, 1, figsize=(10, 6))
+
+# Top plot
+monthly.plot(ax=axes[0])
+axes[0].set_title("Monthly Data")
+
+# Bottom plot
+monthly.anomaly.plot(ax=axes[1])
+axes[1].set_title("Anomaly")
+
+plt.tight_layout()
+plt.show()
