@@ -104,28 +104,31 @@ pyplot.plot(time,absorption)
 pyplot.xlabel("time [s]")
 
 # %%
-a=numpy.arange(10)+1
+a=numpy.arange(10)+1 # creating an array, arange returns evenly spaced values in a given interval, 
+# +1 starting with 1 instead of 0
 
 # %%
-a.shape
+a.shape # returns a tuple, gives length of array dimension
 
 # %%
-a.dtype
+a.dtype #data type object (64bit (standard size) integer)
 
 # %%
-a.nbytes
+a.nbytes # how many bytes the array occupies
 
 # %%
 b=numpy.array([[1,2,3],[4,5,6]])
 
 # %%
-b.shape
+b.shape # That NumPy array is a 2×3 matrix (2 rows, 3 columns). Written out, it looks like this:
+#[[1, 2, 3],
+# [4, 5, 6]]
 
 # %%
-b.T 
+b.T #transpose (rows to columns)
 
 # %%
-b.T @b
+b.T @b #matrix multiplied
 
 # %%
 a.T @a
@@ -134,10 +137,10 @@ a.T @a
 a
 
 # %%
-numpy.max(a)
+numpy.max(a) #highest value
 
 # %%
-numpy.argmax(a)
+numpy.argmax(a) #position of hightest value
 
 # %% [raw]
 # for i in range (data)
@@ -150,7 +153,7 @@ numpy.argmax(a)
 # window-size w
 
 # %%
-absorption = numpy.array(absorption)
+absorption = numpy.array(absorption) #turn list to array
 time = numpy.array(time)
 
 # %%
@@ -160,25 +163,26 @@ w=50
 subset = absorption #you can choose what part of the data to analyze [:1000]
 
 # %%
-peaks = []
-for i in range(len(subset)):
-    start = max(i-w,0)
-    end = min(i+w, len(subset))
-    window = subset[start:end]
-    max_pos = numpy.argmax(window) + start
-    if i == max_pos:
+peaks = [] #empty list to store indices of peaks
+for i in range(len(subset)): #Go through each position i in your array subset.
+    start = max(i-w,0) # max chooses the higher value of both for boundaries of window
+    end = min(i+w, len(subset)) # min chooses the lower value of both for boundaries of window
+    window = subset[start:end] #sliding window
+    max_pos = numpy.argmax(window) + start #position of hightest value in window, +start: index is relative to the window (starts at 0), you add start to convert it back to the original array index.
+    if i == max_pos: #If the current index i is exactly where the maximum occurs in its window…then i is a local maximum within that window.
         peaks.append(i)
 print(peaks)
 
 # %%
 pyplot.plot(subset)
-pyplot.plot(peaks,subset[peaks], "ro")
+pyplot.plot(peaks,subset[peaks], "ro") #x=location of peak, y is height of peaks
 
 # %%
 test = numpy.arange(20)
 
 # %%
-s = test[5:10] #showing element position 5 to 9
+s = test[5:10] #showing element position 5 to 9, lower bound inclusive, upper bound exclusive
+# startindex is the position (value) you give him
 
 # %%
 s
@@ -193,13 +197,15 @@ test
 # tp[1:]-tp[:-1]
 
 # %%
-time_peaks = time[peaks]
+time_peaks = time[peaks] #x=time, see above
 
 # %%
-delta_t = time_peaks[1:]- time_peaks[:-1]
+delta_t = time_peaks[1:]- time_peaks[:-1] 
+#Everything from index 1 onward (drops the first element)-
+#Everything up to (but not including) the last element (e.g. X2-X1, X3-X2,...)
 
 # %%
-hr = 60 / delta_t
+hr = 60 / delta_t #bpm
 
 # %%
 pyplot.plot(hr)

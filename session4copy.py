@@ -208,6 +208,17 @@ pyplot.plot(hr)
 # Homework session 5: use pandas and find peaks to find the peaks for calculating the hear rate
 
 # %%
+import pandas
+
+# %%
+pulsedata = pandas.read_csv("data/pulse_data.csv")
+print(pulsedata) 
+
+# %%
+time = pulsedata["time"]
+absorption = pulsedata["absorption"]
+
+# %%
 subset = absorption[:2000]
 
 # %%
@@ -222,11 +233,15 @@ peaks, _ = find_peaks(subset, height=0.5, distance=50)
 # The comma , is just unpacking two return values, the _ is a throwaway variable
 
 # %%
+import numpy
+from matplotlib import pyplot
+
+# %%
 pyplot.plot(subset)
 pyplot.plot(peaks,subset[peaks], "ro")
 
 # %% [markdown]
-# Adjusting height
+# Adjusting height (not useful when baseline varies)
 
 # %%
 peaks, _ = find_peaks(subset, height=2000, distance=50)
@@ -234,7 +249,8 @@ pyplot.plot(subset)
 pyplot.plot(peaks,subset[peaks], "ro")
 
 # %% [markdown]
-# Adjusting distance
+# Adjusting distance (more useful within physiological HR, 
+# beats are usually at least 300ms apart)
 
 # %%
 peaks, _ = find_peaks(subset, height=0.5, distance=200)
