@@ -66,7 +66,7 @@
 # Open data in python: (Reading a Data File)
 
 # %%
-dataFile = open("data/pulse_data.csv")
+dataFile = open("../data/pulse_data.csv") # open file in same directory
 
 # %% [markdown]
 # create an empty list:
