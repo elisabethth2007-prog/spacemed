@@ -63,24 +63,41 @@
 # to $T$ we get
 
 # %% [markdown]
-# Open data in python: (Reading a Data File)
+# #Open data in python: (Reading a Data File)
 
 # %%
-dataFile = open("../data/pulse_data.csv") # open file in same directory
+#dataFile = open("../data/pulse_data.csv") # open file in same directory
 
 # %% [markdown]
 # create an empty list:
 
 # %%
-time = []
-absorption = []
+#time = []
+#absorption = []
+
+# %% [markdown]
+# 20.04.2026 Opening the data with a function: 1)move the data loader to a function called read_pulse
+
+# %% [markdown]
+# Input: name of the file, Output: time and absorption
 
 # %%
-dataFile.readline() #discarding first line (header)
-for line in dataFile.readlines():
-    line = line.split(",")
-    time.append(float(line[0]))
-    absorption.append(float(line[1]))
+def read_pulse(fname):
+    dataFile = open(fname)
+    time = []
+    absorption = []
+
+    dataFile.readline() #discarding first line (header)
+    for line in dataFile.readlines():
+        line = line.split(",")
+        time.append(float(line[0]))
+        absorption.append(float(line[1]))
+    return time, absorption
+
+
+# %%
+time, absorption = read_pulse("../data/pulse_data.csv") #returns 2 variables (tuple)
+#(automatically assigns the poition of the elements; you assign 2 things and it returns 2 things)
 
 # %% [markdown]
 # Numpy is on the Charité server, for calculating things like matlab; matplotlib is another library, pyplot is a collection within
