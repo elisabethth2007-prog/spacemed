@@ -8,10 +8,20 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.16.1
 #   kernelspec:
-#     display_name: Python [conda env:conda_envs-gpulab-2025-2]
+#     display_name: Python [conda env:.conda-spacemed]
 #     language: python
-#     name: conda-env-conda_envs-gpulab-2025-2-py
+#     name: conda-env-.conda-spacemed-py
 # ---
+
+# %%
+# %load_ext autoreload 
+# %autoreload 2
+
+# %%
+#loads all packages that have changed
+
+# %% [markdown]
+# # Session 4
 
 # %% [markdown]
 # esc-r makes a raw cell, just plain text (markdown and code are executed)
@@ -76,14 +86,29 @@
 #absorption = []
 
 # %% [markdown]
-# 20.04.2026 Opening the data with a function: 1)move the data loader to a function called read_pulse
+# # Reading Data 20.04.2026
+
+# %% [markdown]
+# Things to import go first
+
+# %%
+import spacemed
+import numpy
+from matplotlib import pyplot
+
+# %%
+spacemed.__version__
+
+
+# %% [markdown]
+# Opening the data with a function: 1)move the data loader to a function called read_pulse
 
 # %% [markdown]
 # Input: name of the file, Output: time and absorption
 
 # %%
 def read_pulse(fname):
-    dataFile = open(fname)
+    dataFile = open(fname) #pure python
     time = []
     absorption = []
 
@@ -95,9 +120,78 @@ def read_pulse(fname):
     return time, absorption
 
 
+# %% [markdown]
+# # Read data to make functions work:
+
 # %%
-time, absorption = read_pulse("../data/pulse_data.csv") #returns 2 variables (tuple)
+time, absorption = read_pulse("../data/pulse_data.csv") 
+
+#returns 2 variables (tuple)
 #(automatically assigns the poition of the elements; you assign 2 things and it returns 2 things)
+
+# %% [markdown]
+# # Homework
+# move the peak finding code to a function called find_peaks
+
+# %%
+absorption = numpy.array(absorption) #turn list to array, very important to run functions
+time = numpy.array(time)
+
+
+# %%
+def find_peaks(data,w):
+
+    peaks = []
+    for i in range(len(data)):
+        start = max(i-w,0)
+        end = min(i+w, len(data))
+        window = data[start:end]
+        max_pos = numpy.argmax(window) + start
+        if i == max_pos:
+            peaks.append(i)
+   
+    return peaks
+
+
+# %% [markdown]
+# Functions can then be called - print(aFunction(1,2))
+
+# %%
+print(find_peaks(absorption,50))
+
+# %%
+peaks = find_peaks(absorption,50)
+
+# %%
+pyplot.plot(absorption)
+pyplot.plot(peaks,absorption[peaks], "ro") #x=location of peak, y is height of peaks
+
+
+# %% [markdown]
+# move the heart rate calculation to a function called calc_heart_rate
+
+# %%
+def calc_heart_rate(time,peaks):
+        time_peaks = time[peaks]
+        delta_t = time_peaks[1:]- time_peaks[:-1] 
+        hr = 60 / delta_t
+        return hr
+
+
+# %% [markdown]
+# Functions can then be called - print(aFunction(1,2))
+
+# %%
+print(calc_heart_rate(time,peaks)) #we need to define time and peaks from our data first
+
+# %%
+hr = calc_heart_rate(time,peaks)
+
+# %%
+pyplot.plot(hr)
+
+# %% [markdown]
+# # Session 4
 
 # %% [markdown]
 # Numpy is on the Charité server, for calculating things like matlab; matplotlib is another library, pyplot is a collection within
@@ -223,6 +317,9 @@ delta_t = time_peaks[1:]- time_peaks[:-1]
 
 # %%
 hr = 60 / delta_t #bpm
+
+# %%
+hr = calc_heart_rate(time,peaks)
 
 # %%
 pyplot.plot(hr)
