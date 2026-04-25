@@ -99,35 +99,37 @@ from matplotlib import pyplot
 # %%
 spacemed.__version__
 
-
 # %% [markdown]
 # Opening the data with a function: 1)move the data loader to a function called read_pulse
 
 # %% [markdown]
 # Input: name of the file, Output: time and absorption
 
-# %%
-def read_pulse(fname):
-    dataFile = open(fname) #pure python
-    time = []
-    absorption = []
-
-    dataFile.readline() #discarding first line (header)
-    for line in dataFile.readlines():
-        line = line.split(",")
-        time.append(float(line[0]))
-        absorption.append(float(line[1]))
-    return time, absorption
-
+# %% [raw]
+# (Changed cell to raw to see if calling the function works)
+# def read_pulse(fname):
+#     dataFile = open(fname) #pure python
+#     time = []
+#     absorption = []
+#
+#     dataFile.readline() #discarding first line (header)
+#     for line in dataFile.readlines():
+#         line = line.split(",")
+#         time.append(float(line[0]))
+#         absorption.append(float(line[1]))
+#     return time, absorption
 
 # %% [markdown]
 # # Read data to make functions work:
 
 # %%
-time, absorption = read_pulse("../data/pulse_data.csv") 
+# before:
+#time, absorption = read_pulse("../data/pulse_data.csv") 
+# after:
+time, absorption = spacemed.read_pulse("../data/pulse_data.csv") #calling the function from module
 
 #returns 2 variables (tuple)
-#(automatically assigns the poition of the elements; you assign 2 things and it returns 2 things)
+#(automatically assigns the position of the elements; you assign 2 things and it returns 2 things)
 
 # %% [markdown]
 # # Homework
@@ -137,55 +139,61 @@ time, absorption = read_pulse("../data/pulse_data.csv")
 absorption = numpy.array(absorption) #turn list to array, very important to run functions
 time = numpy.array(time)
 
+# %% [raw]
+# (Changed cell to raw to see if calling the function works)
+# def find_peaks(data,w):
+#
+#     peaks = []
+#     for i in range(len(data)):
+#         start = max(i-w,0)
+#         end = min(i+w, len(data))
+#         window = data[start:end]
+#         max_pos = numpy.argmax(window) + start
+#         if i == max_pos:
+#             peaks.append(i)
+#    
+#     return peaks
 
 # %%
-def find_peaks(data,w):
-
-    peaks = []
-    for i in range(len(data)):
-        start = max(i-w,0)
-        end = min(i+w, len(data))
-        window = data[start:end]
-        max_pos = numpy.argmax(window) + start
-        if i == max_pos:
-            peaks.append(i)
-   
-    return peaks
-
+peaks = spacemed.find_peaks(absorption, 50) #calling the function from module
 
 # %% [markdown]
 # Functions can then be called - print(aFunction(1,2))
 
 # %%
-print(find_peaks(absorption,50))
+print(spacemed.find_peaks(absorption,50)) #we have to rename the function (full name incl. spacemed.)
 
 # %%
-peaks = find_peaks(absorption,50)
+#peaks = find_peaks(absorption,50)
+#we don't need this anymore, was already defined above by calling the function from module
 
 # %%
 pyplot.plot(absorption)
 pyplot.plot(peaks,absorption[peaks], "ro") #x=location of peak, y is height of peaks
 
-
 # %% [markdown]
 # move the heart rate calculation to a function called calc_heart_rate
 
-# %%
-def calc_heart_rate(time,peaks):
-        time_peaks = time[peaks]
-        delta_t = time_peaks[1:]- time_peaks[:-1] 
-        hr = 60 / delta_t
-        return hr
+# %% [raw]
+# (Changed cell to raw to see if calling the function works)
+# def calc_heart_rate(time,peaks):
+#         time_peaks = time[peaks]
+#         delta_t = time_peaks[1:]- time_peaks[:-1] 
+#         hr = 60 / delta_t
+#         return hr
 
+# %%
+hr = spacemed.calc_heart_rate(time,peaks) #calling the function from module
 
 # %% [markdown]
 # Functions can then be called - print(aFunction(1,2))
 
 # %%
-print(calc_heart_rate(time,peaks)) #we need to define time and peaks from our data first
+print(spacemed.calc_heart_rate(time,peaks)) #we need to define time and peaks from our data first
+#also here, we have to rename the function (full name incl. spacemed.)
 
 # %%
-hr = calc_heart_rate(time,peaks)
+#hr = calc_heart_rate(time,peaks) #we don't need this anymore, was already defined by calling the function from module
 
 # %%
 pyplot.plot(hr)
@@ -318,8 +326,18 @@ delta_t = time_peaks[1:]- time_peaks[:-1]
 # %%
 hr = 60 / delta_t #bpm
 
+
 # %%
-hr = calc_heart_rate(time,peaks)
+# added this from above to still make it work down here without calling function from package
+def calc_heart_rate(time,peaks):
+        time_peaks = time[peaks]
+        delta_t = time_peaks[1:]- time_peaks[:-1] 
+        hr = 60 / delta_t
+        return hr
+
+
+# %%
+hr = calc_heart_rate(time,peaks) 
 
 # %%
 pyplot.plot(hr)
