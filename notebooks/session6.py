@@ -86,7 +86,7 @@
 #absorption = []
 
 # %% [markdown]
-# # Reading Data 20.04.2026
+# # Session 6: Reading Data 20.04.2026
 
 # %% [markdown]
 # Things to import go first
@@ -103,26 +103,10 @@ spacemed.__version__
 # Opening the data with a function: 1)move the data loader to a function called read_pulse
 
 # %% [markdown]
-# Input: name of the file, Output: time and absorption
-
-# %% [raw]
-# (Changed cell to raw to see if calling the function works)
-# def read_pulse(fname):
-#     dataFile = open(fname) #pure python
-#     time = []
-#     absorption = []
-#
-#     dataFile.readline() #discarding first line (header)
-#     for line in dataFile.readlines():
-#         line = line.split(",")
-#         time.append(float(line[0]))
-#         absorption.append(float(line[1]))
-#     return time, absorption
-
-# %% [markdown]
 # # Read data to make functions work:
 
 # %%
+#Input: name of the file, Output: time and absorption
 # before:
 #time, absorption = read_pulse("../data/pulse_data.csv") 
 # after:
@@ -138,21 +122,6 @@ time, absorption = spacemed.read_pulse("../data/pulse_data.csv") #calling the fu
 # %%
 absorption = numpy.array(absorption) #turn list to array, very important to run functions
 time = numpy.array(time)
-
-# %% [raw]
-# (Changed cell to raw to see if calling the function works)
-# def find_peaks(data,w):
-#
-#     peaks = []
-#     for i in range(len(data)):
-#         start = max(i-w,0)
-#         end = min(i+w, len(data))
-#         window = data[start:end]
-#         max_pos = numpy.argmax(window) + start
-#         if i == max_pos:
-#             peaks.append(i)
-#    
-#     return peaks
 
 # %%
 peaks = spacemed.find_peaks(absorption, 50) #calling the function from module
@@ -173,14 +142,6 @@ pyplot.plot(peaks,absorption[peaks], "ro") #x=location of peak, y is height of p
 
 # %% [markdown]
 # move the heart rate calculation to a function called calc_heart_rate
-
-# %% [raw]
-# (Changed cell to raw to see if calling the function works)
-# def calc_heart_rate(time,peaks):
-#         time_peaks = time[peaks]
-#         delta_t = time_peaks[1:]- time_peaks[:-1] 
-#         hr = 60 / delta_t
-#         return hr
 
 # %%
 hr = spacemed.calc_heart_rate(time,peaks) #calling the function from module
