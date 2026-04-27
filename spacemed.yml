@@ -11,6 +11,7 @@ dependencies:
   - matplotlib
   - quarto
   - pandas
+  - flake8
   - pip
   - pip:
     - nibabel 
