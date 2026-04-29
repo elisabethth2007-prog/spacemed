@@ -3,7 +3,7 @@ def read_pulse(fname):
     time = []
     absorption = []
 
-    dataFile.readline() #discarding first line (header)
+    dataFile.readline()  # discarding first line (header)
     for line in dataFile.readlines():
         line = line.split(",")
         time.append(float(line[0]))
