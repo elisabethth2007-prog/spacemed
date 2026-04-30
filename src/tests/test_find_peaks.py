@@ -1,5 +1,6 @@
 from spacemed.find_peaks import find_peaks
 
+
 def test_find_peaks_simple():
     data = [1, 3, 2, 1]
     w = 1
@@ -24,4 +25,4 @@ def test_find_peaks_none():
 
     peaks = find_peaks(data, w)
 
-    assert peaks == [0] 
+    assert peaks == [0]
