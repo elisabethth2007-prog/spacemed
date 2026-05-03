@@ -9,7 +9,7 @@ def find_peaks(data, w):
         end = min(i + w + 1, len(data))
         window = data[start:end]
         max_pos = numpy.argmax(window) + start
-        if data[i] == max(window) and window.count(data[i]) == 1:
+        if i == max_pos:
             peaks.append(i)
 
     return peaks

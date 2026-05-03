@@ -1,4 +1,3 @@
-def divide(a,b):
-    
+def divide(a, b):
     """compute ratio of a and b"""
-    return a/b
+    return a / b

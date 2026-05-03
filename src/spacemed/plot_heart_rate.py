@@ -10,22 +10,23 @@ import numpy
 
 def arg_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("data", type=Path, help="the name of the input file")
     parser.add_argument(
-        "-o", "--output", type=Path, default="hr.png",
-        help="write output to file"
-    )
+        "data", type=Path,
+        help="the name of the input file")
     parser.add_argument(
-        "--version", action="version", version=f"%(prog)s {__version__}"
-    )
+        "-o", "--output", type=Path,
+        default="hr.png", help="write output to file")
+    parser.add_argument(
+        "--version", action="version",
+        version=f"%(prog)s {__version__}")
     return parser
 
 
 def main():
     parser = arg_parser()
     args = parser.parse_args()
-    indata = Path("../data/pulse_data.csv")
-    outname = Path("heart_rate.pdf")
+    indata = args.data
+    outname = args.output
 
     time, absorption = read_pulse(indata)
     absorption = numpy.array(absorption)
