@@ -5,4 +5,7 @@ We also briefly discussed how lower-resolution data can be transformed into high
 
 In the second half, we imported the seaborn library for plotting orbital launch system data. Thereafter, we familiarized ourselves with the analysis of fMRI data, plotting the time series of 3 different voxels. As the last index (time not defined) was kept constant, we were staying in the same axial slice. 
 
-We then constructed the input signal with the length of nt (record data every 2s, 10s on, followed by 10s off). The next step was normalizing the time series data for all 3 points (locations).
+We then constructed the input signal with the length of nt (record data every 2s, 10s on, followed by 10s off). The next step was normalizing the time series data for all 3 points (locations), using a function to compute the z-score, and plotting the normalized data.
+
+Finally, a periodogram (shows spectral content of time series) was created with scipy.signal.periodogram.
+We also cross correlated the brain response with the input signal using scipy.signal.correlate and scipy.signal.correlation_lags in a for-loop. The lag between input signal and maximum of the brain response is an indicator of the blood oxygenation speed.
