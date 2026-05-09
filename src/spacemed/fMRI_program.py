@@ -4,22 +4,25 @@ import nibabel as nib
 from matplotlib import pyplot
 from pathlib import Path
 import scipy.signal
+from cross_correl_MRI import normalise
+from cross_correl_MRI import build_signal
+from . import __version__
 
 
 # Helper functions from module
-def normalise(data):
-    std = np.std(data)
-    if std == 0:
-        return data - np.mean(data)
-    return (data - np.mean(data)) / std
+#def normalise(data):
+#    std = np.std(data)
+#    if std == 0:
+#        return data - np.mean(data)
+#    return (data - np.mean(data)) / std
 
 
-def build_signal(fMRI):
-    fmri = nib.load(fMRI)
-    s_one = np.array([1] * 5 + [0] * 5)
-    nt = fmri.shape[-1]
-    signal = np.tile(s_one, int(np.ceil(nt / 10)))
-    return signal[:nt]
+#def build_signal(fMRI):
+#    fmri = nib.load(fMRI)
+#    s_one = np.array([1] * 5 + [0] * 5)
+#    nt = fmri.shape[-1]
+#    signal = np.tile(s_one, int(np.ceil(nt / 10)))
+#    return signal[:nt]
 
 
 def arg_parser():
@@ -27,12 +30,17 @@ def arg_parser():
         description="Comp. cross-correlation for fMRI slice"
     )
     parser.add_argument("fMRI", type=Path, help="Path to fMRI NIfTI file")
-    parser.add_argument("slice", type=int, help="index of slice to process")
+    parser.add_argument("slice", type=int, 
+        default=0, help="index of slice to process")
     parser.add_argument(
-        "output", type=Path, help="Name output image file (e.g., output.png)"
+        "-o", "--output", type=Path,
+          default="cross.png", help="Name of output image file"
     )
+    parser.add_argument(
+        "--version", action="version",
+        version=f"%(prog)s {__version__}")
     return parser
-
+      
 
 def main():
     parser = arg_parser()
@@ -41,6 +49,7 @@ def main():
     # 1. Load Data
     img = nib.load(args.fMRI)
     data = img.get_fdata()
+    nt = data.shape[-1]
 
     # Check if slice index valid (0-29 typical fMRI-dataset w/ e.g. 30 sl.)
     if args.slice >= data.shape[2]:
@@ -48,14 +57,14 @@ def main():
         return
 
     # 2. Build the reference signal
-    ref_signal = build_signal(args.fMRI)
+    ref_signal = build_signal(nt)
     ref_norm = normalise(ref_signal)
 
     # 3. Process the slice: compute correlation for every voxel in the 2D slice
     slice_data = data[:, :, args.slice, :]
     nx, ny, nt = slice_data.shape
     # shape: tuple, 3rd dimension has been sliced away,
-    # nt already defined as time in build_signal
+    # nt already defined as time for build_signal
 
     # This matrix will store the maximum correlation value for each voxel
     # creates a new array (a grid) where every single entry is the number 0
@@ -64,7 +73,7 @@ def main():
     print(f"Processing slice {args.slice}...")
     for i in range(nx):
         for j in range(ny):
-            voxel_ts = slice_data[i, j, :]
+            voxel_ts = slice_data[i, j, :] # make time series
             if np.all(voxel_ts == 0):  # Skip background voxels
                 continue
 
