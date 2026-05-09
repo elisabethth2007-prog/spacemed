@@ -8,16 +8,15 @@ from cross_correl_MRI import normalise
 from cross_correl_MRI import build_signal
 from . import __version__
 
-
 # Helper functions from module
-#def normalise(data):
+# def normalise(data):
 #    std = np.std(data)
 #    if std == 0:
 #        return data - np.mean(data)
 #    return (data - np.mean(data)) / std
 
 
-#def build_signal(fMRI):
+# def build_signal(fMRI):
 #    fmri = nib.load(fMRI)
 #    s_one = np.array([1] * 5 + [0] * 5)
 #    nt = fmri.shape[-1]
@@ -30,17 +29,20 @@ def arg_parser():
         description="Comp. cross-correlation for fMRI slice"
     )
     parser.add_argument("fMRI", type=Path, help="Path to fMRI NIfTI file")
-    parser.add_argument("slice", type=int, 
-        default=0, help="index of slice to process")
     parser.add_argument(
-        "-o", "--output", type=Path,
-          default="cross.png", help="Name of output image file"
+        "slice", type=int, default=0, help="index of slice to process")
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        default="cross.png",
+        help="Name of output image file",
     )
     parser.add_argument(
-        "--version", action="version",
-        version=f"%(prog)s {__version__}")
+        "--version", action="version", version=f"%(prog)s {__version__}"
+    )
     return parser
-      
+
 
 def main():
     parser = arg_parser()
@@ -73,12 +75,13 @@ def main():
     print(f"Processing slice {args.slice}...")
     for i in range(nx):
         for j in range(ny):
-            voxel_ts = slice_data[i, j, :] # make time series
+            voxel_ts = slice_data[i, j, :]  # make time series
             if np.all(voxel_ts == 0):  # Skip background voxels
                 continue
 
             # Compute cross-correlation and fill array
-            cross = scipy.signal.correlate(normalise(voxel_ts), ref_norm, mode="same")
+            cross = scipy.signal.correlate(
+                normalise(voxel_ts), ref_norm, mode="same")
             correlation_map[i, j] = np.max(cross)
 
     # 4. Display and Save
@@ -96,4 +99,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-#example: python fMRI_program.py brain_scan.nii.gz 15 result_map.png
+# example: python fMRI_program.py brain_scan.nii.gz 15 result_map.png
