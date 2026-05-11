@@ -13,6 +13,7 @@ dependencies:
   - pandas
   - flake8
   - pytest
+  - seaborn
   - pip
   - pip:
     - nibabel 
