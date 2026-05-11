@@ -4,8 +4,9 @@ import nibabel as nib
 from matplotlib import pyplot
 from pathlib import Path
 import scipy.signal
-from cross_correl_MRI import normalise
-from cross_correl_MRI import build_signal
+import spacemed
+from .cross_correl_MRI import normalise
+from .cross_correl_MRI import build_signal
 from . import __version__
 
 # Helper functions from module
