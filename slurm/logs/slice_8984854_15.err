@@ -1,0 +1,2 @@
+usage: sm_fMRI_prog [-h] [-o OUTPUT] [--version] fMRI slice
+sm_fMRI_prog: error: unrecognized arguments: --slice
