@@ -17,4 +17,4 @@ SLICE=${SLURM_ARRAY_TASK_ID}
 sm_fMRI_prog \
 /home/elth11/SpaceMed-2026/elth11/data/fmri-data/3_fMRI_TR2sec_3mm_3min.nii \
 ${SLICE} \
--o cross_map_${SLICE}.png
+-o /home/elth11/SpaceMed-2026/elth11/slurm/brain_slices/cross_map_${SLICE}.png
