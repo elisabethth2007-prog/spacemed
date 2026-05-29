@@ -5,3 +5,5 @@
 *.egg-info/
 *.nfs000000034ce798f200001646
 data/fmri-data/
+slurm/logs/
+slurm/brain_slices/
