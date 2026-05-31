@@ -7,3 +7,4 @@
 data/fmri-data/
 slurm/logs/
 slurm/brain_slices/
+slurm/*.png
