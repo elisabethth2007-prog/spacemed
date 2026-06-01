@@ -13,7 +13,7 @@ pylint:
 pytest:
     stage: test
     script:
-        - pip install -U pytest
+        - pip install -U pytest matplotlib scipy
         - pip install .
         - python -m pytest
 
