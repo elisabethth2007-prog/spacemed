@@ -9,7 +9,7 @@ The shell is fun.
 
 Short biography:
 Je m'appelle Elisabeth, I am 26 y.o..
-I was born in Hamm, Northrhine-Westphalia. I am not good with computers.
+I was born in Hamm, Northrhine-Westphalia.
 
 Session 5:
 virtual environments
